@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Input, Button } from 'semantic-ui-react'
 
 
-const LoginForm = (props) => {
+const JoinForm = (props) => {
 //   console.log('props in login', props)
   const [credentials, setCredentials] = useState({
       username: "",
@@ -18,29 +18,27 @@ const LoginForm = (props) => {
         [e.target.name]: e.target.value
     })
   }
-  const login = (e) => {
+  const register = (e) => {
     e.preventDefault();
-    const reqOptions = {
-        headers: {
-            username: credentials.username,
-            password: credentials.password
-        }
+    const body = {
+        "username": credentials.username,
+        "password": credentials.password
     }
     // console.log('make axios call with these credentials', credentials)
-    axios.post('http://localhost:5001/api/login', {}, reqOptions)
+    axios.post('http://localhost:5001/api/register', credentials)
     .then(response => {
         console.log(response)
         //response.data.token is the token
         // console.log('response', response);
-        localStorage.setItem('token', response.data.token)
-        props.props.history.push('/userlist')
+        // localStorage.setItem('token', response.data.token)
+        props.history.push('/userlist')
 
     })
     .catch(error => console.log('Error:', error.response.data.error))
   }
 
   return (
-    <form onSubmit={login}>
+    <form onSubmit={register}>
       <Input
         type="text"
         name="username"
@@ -55,9 +53,9 @@ const LoginForm = (props) => {
         placeholder="password"
         onChange={handleChange}
       />
-      <br/><Button>Login</Button>
+      <br/><Button>Join</Button>
     </form>
   );
 };
 
-export default LoginForm;
+export default JoinForm;

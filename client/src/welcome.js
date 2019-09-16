@@ -5,9 +5,9 @@ import {
   Grid,
   Header,
   Icon,
-  Input,
   Segment
 } from "semantic-ui-react";
+import { Link } from 'react-router-dom';
 import LoginForm from "./login";
 
 const Welcome = (props) => (
@@ -29,8 +29,7 @@ const Welcome = (props) => (
             Register
           </Header>
           <br />
-          {/* link to /register */}
-          <Button primary>Join</Button>
+          <Button as={Link} to={'/join'} primary>Join</Button>
         </Grid.Column>
       </Grid.Row>
     </Grid>

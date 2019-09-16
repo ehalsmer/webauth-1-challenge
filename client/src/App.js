@@ -6,6 +6,7 @@ import Nav from "./nav";
 import Welcome from "./welcome";
 import PrivateRoute from "./privateRoute";
 import UserList from "./userlist";
+import JoinForm from "./join";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/" render={props => <Nav {...props} />} />
       <div className="app">
         <Route exact path="/" render={props => <Welcome {...props} />} />
+        <Route path="/join" render={props => <JoinForm {...props}/>}/>
         <PrivateRoute path="/userlist" component={UserList} />
       </div>
     </Router>
