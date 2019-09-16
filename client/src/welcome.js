@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   Button,
   Divider,
@@ -6,35 +6,35 @@ import {
   Header,
   Icon,
   Input,
-  Segment,
-} from 'semantic-ui-react'
-import LoginForm from './login';
+  Segment
+} from "semantic-ui-react";
+import LoginForm from "./login";
 
-const Welcome = () => (
-  <Segment >
-    <Grid columns={2} stackable textAlign='center'>
+const Welcome = (props) => (
+  <Segment>
+    <Grid columns={2} stackable textAlign="center">
       <Divider vertical>Or</Divider>
-      <Grid.Row verticalAlign='middle'>
+      <Grid.Row verticalAlign="middle">
         <Grid.Column>
           <Header icon>
-            <Icon name='key' />
+            <Icon name="key" />
             Login
           </Header>
-            <LoginForm />
-
+          <LoginForm props={props}/>
         </Grid.Column>
 
         <Grid.Column>
           <Header icon>
-              <Icon name='user plus'/>
+            <Icon name="user plus" />
             Register
           </Header>
+          <br />
           {/* link to /register */}
           <Button primary>Join</Button>
         </Grid.Column>
       </Grid.Row>
     </Grid>
   </Segment>
-)
+);
 
-export default Welcome
+export default Welcome;

@@ -2,22 +2,24 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, Dropdown, Icon } from "semantic-ui-react";
 
-const Nav = () => {
-
+const Nav = (props) => {
+  const logout = (e) => {
+      e.preventDefault();
+      localStorage.removeItem('token');
+      props.history.push('/')
+  }
   return (
-      <div>Hypothetical nav</div>
-    // <Menu>
-    //   <Menu.Item as={Link} to={"/"}>
-    //     Login
-    //   </Menu.Item>
-    //   <Menu.Item as={Link} to={"/register"}>
-    //     Register
-    //   </Menu.Item>
-    //   <Menu.Item as={Link} to={"/newpost"}>
-    //       <Icon name='plus circle'/>
-    //       New Post
-    //   </Menu.Item>
-    // </Menu>
+    <Menu>
+      <Menu.Item as={Link} to={"/"}>
+        Home
+      </Menu.Item>
+      <Menu.Item as={Link} to={"/userlist"}>
+        Userlist
+      </Menu.Item>
+      <Menu.Item onClick={logout} to={"/"}>
+        Logout
+      </Menu.Item>
+    </Menu>
   );
 };
 

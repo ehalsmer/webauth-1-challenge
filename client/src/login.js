@@ -4,6 +4,7 @@ import { Input, Button } from 'semantic-ui-react'
 
 
 const LoginForm = (props) => {
+  console.log('props in login', props)
   const [credentials, setCredentials] = useState({
       username: "",
       password: ""
@@ -29,10 +30,10 @@ const LoginForm = (props) => {
     axios.post('http://localhost:5001/api/login', {}, reqOptions)
     .then(response => {
         console.log(response)
-        //response.data.payload is the token
+        //response.data.token is the token
         // console.log('response', response);
-        // localStorage.setItem('token', response.data.payload)
-        // props.history.push('/friends')
+        localStorage.setItem('token', response.data.token)
+        props.props.history.push('/userlist')
 
     })
     .catch(error => console.log('Error:', error.response.data.error))
@@ -44,15 +45,17 @@ const LoginForm = (props) => {
         type="text"
         name="username"
         value={credentials.username}
+        placeholder="username"
         onChange={handleChange}
       />
       <Input
         type="password"
         name="password"
         value={credentials.password}
+        placeholder="password"
         onChange={handleChange}
       />
-      <Button>Login</Button>
+      <br/><Button>Login</Button>
     </form>
   );
 };
