@@ -29,7 +29,7 @@ const Welcome = (props) => (
             Register
           </Header>
           <br />
-          <Button as={Link} to={'/join'} primary>Join</Button>
+          <Button circular as={Link} to={'/join'} color="green">Join</Button>
         </Grid.Column>
       </Grid.Row>
     </Grid>

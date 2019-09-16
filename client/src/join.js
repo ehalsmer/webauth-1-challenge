@@ -38,7 +38,7 @@ const JoinForm = (props) => {
   }
 
   return (
-    <form onSubmit={register}>
+    <form onSubmit={register} className="joinForm">
       <Input
         type="text"
         name="username"
@@ -46,6 +46,7 @@ const JoinForm = (props) => {
         placeholder="username"
         onChange={handleChange}
       />
+      <br />
       <Input
         type="password"
         name="password"
@@ -53,7 +54,7 @@ const JoinForm = (props) => {
         placeholder="password"
         onChange={handleChange}
       />
-      <br/><Button>Join</Button>
+      <br/><Button circular color="green">Join</Button>
     </form>
   );
 };

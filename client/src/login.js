@@ -55,7 +55,7 @@ const LoginForm = (props) => {
         placeholder="password"
         onChange={handleChange}
       />
-      <br/><Button>Login</Button>
+      <br/><Button circular color="teal">Login</Button>
     </form>
   );
 };
