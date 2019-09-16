@@ -13,6 +13,6 @@ server.get('/', (req, res) => {
     res.send('up')
 })
 
-server.use('/api/auth', authRouter)
+server.use('/api/', authRouter)
 
 module.exports = server;
