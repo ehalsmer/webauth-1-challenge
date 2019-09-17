@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, Dropdown, Icon } from "semantic-ui-react";
+import axios from 'axios';
+axios.defaults.withCredentials = true;
+
 
 const Nav = (props) => {
   const logout = (e) => {
       e.preventDefault();
-      localStorage.removeItem('token');
-      props.history.push('/')
+      axios.get("http://localhost:5001/api/logout")
+      .then(response => {
+        console.log(response);
+        props.history.push('/')
+      })
+      .catch(error => {
+        console.log(error);
+      })
   }
   return (
     <Menu>

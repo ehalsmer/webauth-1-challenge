@@ -25,14 +25,11 @@ const LoginForm = (props) => {
             username: credentials.username,
             password: credentials.password
         },
-        // withCredentials: true
     }
     // console.log('make axios call with these credentials', credentials)
     axios.post('http://localhost:5001/api/login', {}, reqOptions)
     .then(response => {
         console.log(response)
-        //response.data.token is the token
-        // console.log('response', response);
         localStorage.setItem('token', response.data.token)
         props.props.history.push('/userlist')
 
