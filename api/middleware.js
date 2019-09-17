@@ -12,6 +12,7 @@ function validateCred(req, res, next){
     AuthModel.findBy({username}).first()
     .then(user => {
         if(user && bcrypt.compareSync(password, user.password)){
+            req.session.user=user
             next()
         } else {
             res.status(401).json({message: 'Invalid credentials'})
