@@ -24,7 +24,8 @@ const LoginForm = (props) => {
         headers: {
             username: credentials.username,
             password: credentials.password
-        }
+        },
+        // withCredentials: true
     }
     // console.log('make axios call with these credentials', credentials)
     axios.post('http://localhost:5001/api/login', {}, reqOptions)

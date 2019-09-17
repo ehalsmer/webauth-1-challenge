@@ -6,6 +6,11 @@ const session = require('express-session');
 const KnexSessionStore = require('connect-session-knex')(session);
 const db = require('../data/db-config');
 
+const corsConfig = {
+    origin: 'http://localhost:3000',
+    credentials: true
+  }
+
 const sessionConfig = {
     name: 'sessionCookie', // would name the cookie sid by default
     secret: process.env.session_secret || 'secret',
@@ -29,7 +34,7 @@ const sessionConfig = {
 const server = express();
 server.use(helmet());
 server.use(express.json());
-server.use(cors());
+server.use(cors(corsConfig));
 server.use(session(sessionConfig))
 
 const authRouter = require('./authentication/auth-router')
