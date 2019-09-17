@@ -1,11 +1,13 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 
+
 const middleware = require('../middleware');
 const AuthModel = require('./auth-model');
 const authRouter = express.Router();
 
-authRouter.get('/users', middleware.validateCred, (req, res) => {
+
+authRouter.get('/users', middleware.validateSession, (req, res) => {
     AuthModel.find()
     .then(response => {
         res.status(200).json(response)

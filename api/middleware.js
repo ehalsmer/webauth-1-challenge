@@ -3,7 +3,8 @@ const AuthModel = require('../api/authentication/auth-model');
 
 module.exports = {
     validateCred,
-    validateUnique
+    validateUnique,
+    validateSession
 }
 
 function validateCred(req, res, next){
@@ -39,4 +40,12 @@ function validateUnique(req, res, next){
     .catch(error => {
         res.status(500).json({message: 'error checking username'})
     })
+}
+
+function validateSession(req, res, next) {
+    if(req.session && req.session.user){
+        next();
+    } else {
+        res.status(401).json({message: "You must be logged in to do that"})
+    }
 }
